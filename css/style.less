@@ -1,0 +1,65 @@
+/*
+This is the uncompressed styles for them tumblr theme.
+Each of these files contains less that is them compiled and output into style.min.css
+
+*/
+
+/* 
+# Reset CSS
+Removes browser defaults 
+*/
+@import "source/reset.less";
+
+/* 
+# Font file
+Adds fonts using @font-face
+*/
+@import "source/fonts.less";
+
+/*
+# Variables
+Contains all of the variales used throughout the less files
+*/
+@import "source/variables.less";
+
+/*
+# Mixins
+Mixins that may be used throughout the rest of the less.
+*/
+@import "source/mixins.less";
+
+/*
+# Utility Classes
+Such as hidden-xs and hidden. Not site specific
+*/
+@import "source/utilities.less";
+
+
+/*
+# Typeographic styles
+*/
+@import "source/typeography.less";
+
+/*
+# Header styles
+*/
+@import "source/header.less";
+
+/*
+# Main styles
+The main stylesheet where the grid system and container is defined.
+*/
+@import "source/main.less";
+
+/*
+# Index page stlyes
+Styles for the homepage and tagged page
+*/
+@import "source/index.less";
+
+/*
+# Fallback styles
+If there are any browser specific fallbacks required add them here. 
+They should be controled by a class on the body of the html.
+*/
+@import "source/fallbacks.less";

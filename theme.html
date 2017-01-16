@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- RSS feed -->
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="{Favicon}">
+
+	<title>{Title}</title>
+
+	{block:Description}
+		<meta name="description" content="{MetaDescription}" />
+	{/block:Description}
+
+	<!-- Stylesheet -->
+	<link rel="stylesheet" href="css/style.min.css">
+
+	<!-- Jquery Google CDN -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<!-- Meta -->
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="robots" content="index, follow" />
+
+	<!-- Declare Theme options -->
+	<meta name="text:Author Name" content=""/>
+	<meta name="if:Use My Title" content="1"/>
+
+
+	<!-- Custom CSS -->
+	<style type="text/css" media="screen">
+        {CustomCSS}
+    </style>
+
+
+</head>
+<body>
+	<header>
+	
+		<!-- Blog title -->
+		<h1>{Title}</h1>
+	
+		<!-- navigation -->
+		<nav id="main-nav">
+			<ul>
+				<li>
+					<a href="/path/">Nav Item</a>
+				</li>
+			</ul>
+		</nav>
+
+	</header>
+
+	<main>
+	
+	{block:IndexPage}
+	<!-- 
+	Index page: 
+	This is the content that displays on the homepage and tagged pages.
+	Add any html here that goes outside of the post loop
+	-->
+
+		{block:Posts}
+		<!-- 
+		Post Loop:
+		This is the post loop.
+		If there are no posts then this block will not show.
+		-->
+		<div class="post-list">
+	        {block:Post}
+	        <!--
+	        Post:
+	        This is the content that will be output for each post.
+	        Within this loop each block is a post type. For each post type the html that gets output can be changed.
+	        -->
+	        <div id="{PostId}" class="post {PostType}">
+
+			    <!-- Start Text Post -->
+				{block:Text}
+					{block:Title} 
+						<h3>{Title}</h3>
+					{/block:Title}
+					{Body}
+				{/block:Text}
+				<!-- End Text Post -->
+				
+				<!-- Start Photo Post -->
+				{block:Photo}
+				<figure>
+					{block:HighRes}
+					<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}">
+					{/block:HighRes}
+					<img {block:HighRes} class="hidden" {/block:HighRes} src="{PhotoURL-500}" alt="{PhotoAlt}">	
+					{block:Caption} 
+					<figcaption>
+						{Caption}
+					</figcaption>
+					{/block:Caption}
+				</figure>
+				{/block:Photo}
+				<!-- Start Photo Post -->
+
+				<!-- Start Photoset Post -->
+				{block:Photoset}
+					{block:Photos} 
+					<figure>
+						{block:HighRes}
+						<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}">
+						{/block:HighRes}
+						<img {block:HighRes} class="hidden" {/block:HighRes} src="{PhotoURL-500}" alt="{PhotoAlt}">	
+						{block:Caption} 
+						<figcaption>
+							{Caption}
+						</figcaption>
+						{/block:Caption}
+					</figure>
+					{/block:Photos}
+				</div>
+				{/block:Photoset}
+				<!-- Start Photoset Post -->
+				
+				<!-- Start Quote Post -->
+				{block:Quote}
+				<blockquote>
+					{Quote}
+					<br>
+					<cite>{block:Source} - {Source}{/block:Source}</cite>
+				</blockquote>
+				{/block:Quote}
+				<!-- Start Quote Post -->
+
+				<!-- Start Link Post -->
+				{block:Link} 
+					<a href="{URL}">
+						{Name}
+						{block:Excerpt}
+						<br>
+						{Excerpt}
+						{/block:Excerpt}
+						{block:Description} 
+						<br>
+						{Description}
+						{/block:Description}
+					</a>
+					
+				{/block:Link}
+				<!-- Start Link Post -->
+				
+				<!-- Start Chat Post -->
+				{block:Chat}
+					{block:Title} 
+						<strong>{Title}</strong>
+					{/block:Title}
+					{block:Lines}
+						{Line}
+					{/block:Lines}
+				{/block:Chat}
+				<!-- Start Chat Post -->
+
+				<!-- Start Audio Post -->
+				{block:Audio}
+					<figure>
+						{AudioEmbed}
+						{block:Caption} 
+						<figcaption>{Caption}</figcaption>
+						{/block:Caption}
+					</figure>
+				{/block:Audio}
+				<!-- Start Audio Post -->
+
+				<!-- Start Video Post -->
+				{block:Video}
+				<figure>
+					<div class="video-ar">
+						{Video-700}
+					</div>
+					{block:Caption} 
+					<figcaption>
+						{Caption}
+					</figcaption>
+					{/block:Caption}
+				</figure>
+				{/block:Video}
+				<!-- Start Video Post -->
+
+				<!-- Start Answer Post -->
+				{block:Answer}
+				<strong>{Question}</strong>
+				<span class="align-right">- {Asker}</span>
+				<br>
+				{Answer} 
+				<span class="align-right">- {Answerer}</span>
+				{/block:Answer}
+				<!-- Start Answer Post -->
+
+	        </div>
+
+	        {/block:Post}
+	    </div>
+	    {/block:Posts}
+
+	    {block:TagPage}
+	    <!-- 
+	    If page is a tagpage use this block to output custom html
+	    A tagpage is a index page but the homepage isn't the tag page
+	    -->
+	    	<h3>{Tag}</h3>
+	    {/block:TagPage}
+	
+	{/block:IndexPage}
+
+
+	{block:PermalinkPage}
+	<!-- 
+	Single Post:
+	The permalink page block contains the html for individual pages
+	The posts loop will output a single Post
+	-->
+	<article id="{PostId}" class="post {PostType}">
+		{block:Posts}
+	        {block:Post}
+
+			    <!-- Start Text Post -->
+				{block:Text}
+					{block:Title} 
+						<h3>{Title}</h3>
+					{/block:Title}
+					{Body}
+				{/block:Text}
+				<!-- End Text Post -->
+				
+				<!-- Start Photo Post -->
+				{block:Photo}
+				<figure>
+					{block:HighRes}
+					<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}">
+					{/block:HighRes}
+					<img {block:HighRes} class="hidden" {/block:HighRes} src="{PhotoURL-500}" alt="{PhotoAlt}">	
+					{block:Caption} 
+					<figcaption>
+						{Caption}
+					</figcaption>
+					{/block:Caption}
+				</figure>
+				{/block:Photo}
+				<!-- Start Photo Post -->
+
+				<!-- Start Photoset Post -->
+				{block:Photoset}
+					{block:Photos} 
+					<figure>
+						{block:HighRes}
+						<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}">
+						{/block:HighRes}
+						<img {block:HighRes} class="hidden" {/block:HighRes} src="{PhotoURL-500}" alt="{PhotoAlt}">	
+						{block:Caption} 
+						<figcaption>
+							{Caption}
+						</figcaption>
+						{/block:Caption}
+					</figure>
+					{/block:Photos}
+				</div>
+				{/block:Photoset}
+				<!-- Start Photoset Post -->
+				
+				<!-- Start Quote Post -->
+				{block:Quote}
+				<blockquote>
+					{Quote}
+					<br>
+					<cite>{block:Source} - {Source}{/block:Source}</cite>
+				</blockquote>
+				{/block:Quote}
+				<!-- Start Quote Post -->
+
+				<!-- Start Link Post -->
+				{block:Link} 
+					<a href="{URL}">
+						{Name}
+						{block:Excerpt}
+						<br>
+						{Excerpt}
+						{/block:Excerpt}
+						{block:Description} 
+						<br>
+						{Description}
+						{/block:Description}
+					</a>
+					
+				{/block:Link}
+				<!-- Start Link Post -->
+				
+				<!-- Start Chat Post -->
+				{block:Chat}
+					{block:Title} 
+						<strong>{Title}</strong>
+					{/block:Title}
+					{block:Lines}
+						{Line}
+					{/block:Lines}
+				{/block:Chat}
+				<!-- Start Chat Post -->
+
+				<!-- Start Audio Post -->
+				{block:Audio}
+					<figure>
+						{AudioEmbed}
+						{block:Caption} 
+						<figcaption>{Caption}</figcaption>
+						{/block:Caption}
+					</figure>
+				{/block:Audio}
+				<!-- Start Audio Post -->
+
+				<!-- Start Video Post -->
+				{block:Video}
+				<figure>
+					<div class="video-ar">
+						{Video-700}
+					</div>
+					{block:Caption} 
+					<figcaption>
+						{Caption}
+					</figcaption>
+					{/block:Caption}
+				</figure>
+				{/block:Video}
+				<!-- Start Video Post -->
+
+				<!-- Start Answer Post -->
+				{block:Answer}
+				<strong>{Question}</strong>
+				<span class="align-right">- {Asker}</span>
+				<br>
+				{Answer} 
+				<span class="align-right">- {Answerer}</span>
+				{/block:Answer}
+				<!-- Start Answer Post -->
+	        {/block:Post}
+	    {/block:Posts}
+			
+		
+		{block:HasTags}
+		<!-- Start Tags -->
+			<div class="tags">
+				<ul class="tags-list">
+					{block:Tags} 
+					<li><a href="{TagURL}">{Tag}</a></li>
+					{/block:Tags}
+				</ul>
+			</div>
+		{/block:HasTags}
+		<!-- End Tags -->
+
+
+	</article>
+
+	{/block:PermalinkPage}
+	
+
+	{block:SearchPage}
+	<!-- 
+	Content that is output on a search results page 
+	This is not very commonly used.
+	-->
+
+	{/block:SearchPage}
+
+	</main>
+
+	<footer>
+
+		{block:Pagination}
+		<!--
+		Pagination:
+		Adds buttons for next and previous
+		These can be output on index pages and posts.
+		-->
+		<div class="pagination">
+			{block:PreviousPage}
+			<a href="{PreviousPage}">&#171; Previous</a>
+    		{/block:PreviousPage}
+    		{block:NextPage}
+        	<a href="{NextPage}">Next &#187;</a>
+    		{/block:NextPage}
+    	</div>
+    	{/block:Pagination}
+
+	
+	</footer>
+
+	<!-- JS files -->
+	<div id="bs-size-check" style="opacity:0; pointer-event:none;position:absolute;bottom:0;right:0;">
+		<!-- This element is used by the JS to check what the screen size is. -->
+		<div class="visible-xs"></div><div class="visible-sm"></div><div class="visible-md"></div><div class="visible-lg"></div>
+	</div>
+	<script src="js/general.js"></script>
+</body>
+</html>

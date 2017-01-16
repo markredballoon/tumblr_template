@@ -1,0 +1,141 @@
+html, 
+body{
+	font-family: @font-sans;
+	font-size: @font-size-base;
+	line-height: @line-height-base;
+	color: @text;
+}
+
+/* links */
+a{
+	color: @link-blue;
+	text-decoration: none;
+	&:hover, 
+	&:active, 
+	&:focus{
+		text-decoration: underline;
+	}
+}
+
+/* lists */
+ul, 
+ol{
+	margin: 0 0 @text-margin-base;
+	li{
+		margin: 0 0 @text-margin-large;
+		line-height: @line-height-base;
+		@media screen and (max-width: @screen-xs-max) {
+			line-height: @line-height-xs-base;
+			margin-bottom: 7px;
+		}
+	}
+}
+
+
+ol{
+	li{
+		list-style-type: decimal;
+		list-style-position: inside;
+	}
+}
+
+ul{
+	li{
+		list-style-type: none;
+	}
+}
+
+/*
+ul.bulleted{
+	padding-left: 1em;
+	li::before{
+		margin-right: 0.35em;
+		margin-left: -0.7em;
+		content: '▪';
+		color: @curl-pink-2;
+		font-size: 1.3em;
+		display: inline-block;
+		line-height: inherit;
+	}
+}
+*/
+
+/* Standard content */
+p, .p{
+	margin: 0 0 @text-margin-large;
+}
+
+strong, .strong{
+	font-weight: 700;
+}
+
+small, .small{
+	font-size: @font-size-small;
+}
+
+blockquote{
+	p:last-of-type{
+		margin-bottom: 0;
+	}
+}
+
+/* Headings */
+h1, .h1{
+	font-size: @font-size-h1;
+	line-height: @line-height-h1;
+}
+h2, .h2{
+	font-size: @font-size-h2;
+	line-height: @line-height-h2;
+}
+h3, .h3{
+	font-size: @font-size-h3;
+	line-height: @line-height-h3;
+	margin-bottom: 10px;
+	@media screen and (max-width: @screen-xs-max){
+		font-size: @font-size-xs-h3;
+		line-height: @line-height-xs-h3;
+		margin-bottom: 4px;
+	}
+}
+h4, .h4{
+	font-size: @font-size-h4;
+	line-height: @line-height-h4;
+}
+h5, .h5,
+h6, .h6{
+	font-size: @font-size-base;
+	line-height: @line-height-h4;
+}
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6{
+	font-weight: 700;
+}
+
+/* Post Image Styles */
+
+figure{
+	margin: 0;
+	img{
+		display: block;
+		width: 100%;
+		height: auto;
+		margin: 0 auto;
+	}
+	figcaption{
+		font-size: @font-size-small;
+	}
+}
+
+.post{
+	figure{
+		margin: 15px 0;
+	}
+	>img{
+		margin: 15px 0;
+	}
+}

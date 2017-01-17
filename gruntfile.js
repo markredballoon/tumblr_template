@@ -1,22 +1,23 @@
 module.exports = function(grunt) {
     require('jit-grunt')(grunt);
-
     grunt.initConfig({
-        // cmq: {
-        //     your_target: {
-        //         "css/main.css": "css/tmp.css"
-        //     }
-        // },
         less: {
             development: {
                 options: {
-                    compress: true,
+                    plugins: [
+                        require('less-plugin-group-css-media-queries'),
+                        new(require('less-plugin-autoprefix'))({ browsers: ["last 2 versions"] }),
+                        new(require('less-plugin-clean-css'))({advanced: true})
+                    ],
+                    compress: false,
+                    cleancss: true,
                     yuicompress: true,
                     optimization: 2,
-                    plugins: [new(require('less-plugin-autoprefix'))({ browsers: ["last 2 versions"] })]
+                    sourceMap: true,
+                    sourceMapFilename: 'css/style.map.css'
                 },
                 files: {
-                    "css/main.css": "css/source/main.less" // destination file and source file
+                    "css/style.min.css": "css/source/style.less" // destination file and source file
                 }
             }
         },
@@ -31,6 +32,5 @@ module.exports = function(grunt) {
         }
     });
     grunt.loadNpmTasks('grunt-contrib-less');
-    // grunt.loadNpmTasks('grunt-combine-media-queries');
     grunt.registerTask('default', ['less', 'watch']);
 };

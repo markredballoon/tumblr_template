@@ -40,6 +40,9 @@ The css folder contains an example of a less style structure. This doesn't inclu
 This template includes a grunt autocompiler that listens for any updates to files within the source/css folder and compiles them. This compilation includes minification, concatination of the media queries and autoprefixing.
 A sourcemap is also created.
 
+The "main" less file is `css/source/style.less`. This file imports all of the other less files. Within that file is documentation for all of the other less files.
+
+
 ## Installation
 * Download or clone this repo onto your machine.
 * Install the build tools by running run `$ npm install` then `$ grunt`

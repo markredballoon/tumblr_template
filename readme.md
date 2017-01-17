@@ -45,7 +45,7 @@ The "main" less file is `css/source/style.less`. This file imports all of the ot
 
 ## Installation
 * Download or clone this repo onto your machine.
-* Install the build tools by running run `$ npm install` then `$ grunt`
+* Install the build tools by running run `$ npm install`. Run them with `$ grunt`.
 
 
     

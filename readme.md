@@ -48,4 +48,12 @@ The "main" less file is `css/source/style.less`. This file imports all of the ot
 * Install the build tools by running run `$ npm install`. Run them with `$ grunt`.
 
 
+### To Do
+
+* Add demo files
+* Clean up less files even more
+* Add more less mixins
+* Add JS build tools
+* Update the theme html file to include more snippets.
+* Add more documentation for how to implement API index pages.
     
